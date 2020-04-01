@@ -25,15 +25,19 @@ public class Main {
         System.out.printf("\nElementos da lista %s \n", main.showListElements(searchOnList));
         System.out.println("\n===============\n");
 
+
         List pos2 = main.moveFor2Position(searchOnList, searchElement, useDelay, delayTime);
         System.out.printf("Buscando %s na posição 2 - iterações = %s - tempo de execução = %s segs \n",
                 searchElement, pos2.get(0), pos2.get(1));
 
-        System.out.printf("Buscando %s na posição mediana - iterações = %s segs \n",
-                searchElement, main.moveForMiddlePosition(searchOnList, searchElement, useDelay, delayTime));
+        List posMiddle = main.moveForMiddlePosition(searchOnList, searchElement, useDelay, delayTime);
+        System.out.printf("Buscando %s na posição mediana - iterações = %s - tempo de execução = %s segs \n",
+                searchElement, posMiddle.get(0), posMiddle.get(1));
 
-        System.out.printf("Buscando %s sem existir no vetor - iterações = %s segs \n",
-                searchElement, main.searchIfNotExists(searchOnList, searchElement, useDelay, delayTime));
+        List notExists = main.searchIfNotExists(searchOnList, searchElement, useDelay, delayTime);
+        System.out.printf("Buscando %s sem existir no vetor - iterações = %s - tempo de execução = %s segs \n",
+                searchElement, notExists.get(0), notExists.get(1));
+
     }
 
 
