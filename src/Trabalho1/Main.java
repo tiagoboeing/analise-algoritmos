@@ -5,80 +5,34 @@ import java.util.stream.IntStream;
 
 public class Main {
 
-//    private int[] list1 = new int[11];
-//    private int[] list2 = new int[21];
-//    private int[] list3 = new int[42];
-
-    private int[] list1 = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    private int[] list2 = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
-    private int[] list3 = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41};
-
-    // define your constants here
-    public final int[] searchOnList = list1;
-    public final int searchElement = 18;
-
     public static void main(String[] args) {
+        int[] list1 = IntStream.range(0, 11).toArray();
+        int[] list2 = IntStream.range(0, 21).toArray();
+        int[] list3 = IntStream.range(0, 42).toArray();
+        int[] longList = IntStream.range(0, 13215468).toArray();
+
+        // Define values here
+        final int searchElement = 19;
+        final int[] searchOnList = longList;
+
         Main main = new Main();
 
-        // BuscaPrimeiraOcorrencia algorithm
-        int j = 1;
-        int x = main.searchElement;
-        int counterWhile = 0;
-        int n = main.searchOnList.length;
-        int counterMove2Pos = 0;
-        int counterMoveMiddlePos = 0;
-        int counterNotExists = 0;
+        // list elements
+        System.out.printf("\nElementos da lista %s \n", main.showListElements(searchOnList));
+        System.out.println("\n===============\n");
 
-        while (main.searchOnList[j] != x) {
-            counterWhile++;
-            j++;
+        System.out.printf("Buscando %s na posição 2 - iterações = %s \n",
+                searchElement, main.moveFor2Position(searchOnList, searchElement));
 
-            main.BuscaPrimeiraOcorrencia(main.list1, 8);
+        System.out.printf("Buscando %s na posição mediana - iterações = %s \n",
+                searchElement, main.moveForMiddlePosition(searchOnList, searchElement));
 
-            if (j >= n) {
-                j = n - 1;
-                break;
-            }
-        }
-
-        int counter = 0;
-        boolean signal;
-        if (main.searchOnList[j] != x) {
-            counter++;
-            signal = false;
-        } else {
-            signal = true;
-        }
-
-//        while (j < main.searchOnList.length) {
-//            counterWhile++;
-//            j++;
-//
-//            counterMove2Pos += main.moveFor2Position(main.searchOnList, j);
-//            counterMoveMiddlePos += main.moveForMiddlePosition(main.searchOnList, j);
-//            counterNotExists += main.searchIfNotExists(main.searchOnList, j);
-//        }
-
-
-
-
-        // fill all lists and show in values in console
-//        System.out.println("Lista 1");
-//        main.showListElements(main.fillList(main.list1, 11));
-//
-//        System.out.println("\nLista 2");
-//        main.showListElements(main.fillList(main.list2, 21));
-//
-//        System.out.println("\nLista 3");
-//        main.showListElements(main.fillList(main.list3, 42));
-
+        System.out.printf("Buscando %s sem existir no vetor - iterações = %s \n",
+                searchElement, main.searchIfNotExists(searchOnList, searchElement));
     }
 
-    void BuscaPrimeiraOcorrencia(int[] A, int x) {
-        int[] lista1 = IntStream.range(0, 13215468).toArray();
-    }
 
-    void showListElements(int[] list) {
+    ArrayList<Integer> showListElements(int[] list) {
         int j = 0;
         ArrayList<Integer> elements = new ArrayList<>();
         while (j < list.length) {
@@ -86,7 +40,7 @@ public class Main {
             j++;
         }
 
-        System.out.println(elements);
+        return elements;
     }
 
     /**
@@ -99,7 +53,8 @@ public class Main {
      */
     private int moveFor2Position(int[] list, int element) {
         int counter = 0;
-        for (int i = 0; i < list.length; i++) {
+        int i = 0;
+        while (i < list.length) {
             if (list[i] != element) {
                 counter++;
             } else {
@@ -110,6 +65,7 @@ public class Main {
                 list[1] = tmp;
                 list[i] = pos2;
             }
+            i++;
         }
         return counter;
     }
@@ -124,8 +80,10 @@ public class Main {
      */
     private int moveForMiddlePosition(int[] list, int element) {
         int counter = 0;
+        int i = 0;
         int middle = (list.length + 1) / 2;
-        for (int i = 0; i < list.length; i++) {
+
+        while (i < list.length) {
             if (list[i] != element) {
                 counter++;
             } else {
@@ -136,6 +94,7 @@ public class Main {
                 list[middle] = tmp;
                 list[i] = middlePosition;
             }
+            i++;
         }
         return counter;
     }
@@ -149,29 +108,16 @@ public class Main {
      */
     private int searchIfNotExists(int[] list, int element) {
         int counter = 0;
-        for (int i = 0; i < list.length; i++) {
+        int i = 0;
+
+        while (i < list.length) {
             if (list[i] != element) {
                 counter++;
             }
+            i++;
         }
         return counter;
     }
-
-    /**
-     * Fill a list in crescent order
-     *
-     * @param list        list to be filled
-     * @param qtyElements N elements to be generated
-     * @return filled list
-     */
-//    public int[] fillList(int[] list, int qtyElements) {
-//        int[] sortedNumbers = new int[qtyElements];
-//        for (int i = 1; i < qtyElements; i++) {
-//            sortedNumbers[i] = i;
-//        }
-//        list = sortedNumbers;
-//        return list;
-//    }
 }
 
 
