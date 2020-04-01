@@ -5,6 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
+/**
+ * @author Tiago Boeing
+ */
+
 public class Main {
 
     public static void main(String[] args) throws Exception {
@@ -16,8 +20,10 @@ public class Main {
         // Define values here
         final int searchElement = 8; // element to be searched
         final int[] searchOnList = list1; // choose a list
+
+        // USE DELAY
         final boolean useDelay = false;
-        final int delayTime = 5000; // in milliseconds
+        final int delayTime = 2000; // in milliseconds
 
         Main main = new Main();
 
@@ -26,15 +32,18 @@ public class Main {
         System.out.println("\n===============\n");
 
 
+        // Run one test at a time, comment other lines
+
         List pos2 = main.moveFor2Position(searchOnList, searchElement, useDelay, delayTime);
         System.out.printf("Buscando %s na posição 2 - iterações = %s - tempo de execução = %s segs \n",
                 searchElement, pos2.get(0), pos2.get(1));
+
 
         List posMiddle = main.moveForMiddlePosition(searchOnList, searchElement, useDelay, delayTime);
         System.out.printf("Buscando %s na posição mediana - iterações = %s - tempo de execução = %s segs \n",
                 searchElement, posMiddle.get(0), posMiddle.get(1));
 
-        List notExists = main.searchIfNotExists(searchOnList, searchElement, useDelay, delayTime);
+        List notExists = main.searchIfNotExists(searchOnList, 200, useDelay, delayTime);
         System.out.printf("Buscando %s sem existir no vetor - iterações = %s - tempo de execução = %s segs \n",
                 searchElement, notExists.get(0), notExists.get(1));
 
@@ -77,6 +86,8 @@ public class Main {
                 // crossover
                 list[1] = tmp;
                 list[i] = pos2;
+
+                break;
             }
             i++;
         }
@@ -110,6 +121,8 @@ public class Main {
                 // crossover
                 list[middle] = tmp;
                 list[i] = middlePosition;
+
+                break;
             }
             i++;
         }
