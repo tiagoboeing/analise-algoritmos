@@ -18,7 +18,7 @@ public class Main {
         int[] longList = IntStream.range(0, 15324799).toArray();
 
         // Define values here
-        final int searchElement = 8; // element to be searched
+        final int searchElement = 5; // element to be searched
         final int[] searchOnList = list1; // choose a list
 
         // USE DELAY
@@ -31,21 +31,20 @@ public class Main {
         System.out.printf("\nElementos da lista %s \n", main.showListElements(searchOnList));
         System.out.println("\n===============\n");
 
-
+        
         // Run one test at a time, comment other lines
-
         List pos2 = main.moveFor2Position(searchOnList, searchElement, useDelay, delayTime);
-        System.out.printf("Buscando %s na posição 2 - iterações = %s - tempo de execução = %s segs \n",
-                searchElement, pos2.get(0), pos2.get(1));
+        System.out.printf("Buscando %s na posição 2 | Iterações (else): %s | Iterações (while): %s | Tempo: %s segs \n",
+                searchElement, pos2.get(0), pos2.get(1), pos2.get(2));
 
 
         List posMiddle = main.moveForMiddlePosition(searchOnList, searchElement, useDelay, delayTime);
-        System.out.printf("Buscando %s na posição mediana - iterações = %s - tempo de execução = %s segs \n",
-                searchElement, posMiddle.get(0), posMiddle.get(1));
+        System.out.printf("Buscando %s na posição mediana | Iterações (else): %s | Iterações (while): %s | Tempo: %s segs \n",
+                searchElement, posMiddle.get(0), posMiddle.get(1), posMiddle.get(2));
 
         List notExists = main.searchIfNotExists(searchOnList, 200, useDelay, delayTime);
-        System.out.printf("Buscando %s sem existir no vetor - iterações = %s - tempo de execução = %s segs \n",
-                searchElement, notExists.get(0), notExists.get(1));
+        System.out.printf("Buscando %s quando não existir | Iterações (else): %s | Iterações (while): %s | Tempo: %s segs \n",
+                searchElement, notExists.get(0), notExists.get(1), notExists.get(2));
 
     }
 
@@ -92,7 +91,7 @@ public class Main {
             i++;
         }
 
-        return Arrays.asList(counter, calcDurationTime(start));
+        return Arrays.asList(counter, i, calcDurationTime(start));
     }
 
     /**
@@ -127,7 +126,7 @@ public class Main {
             i++;
         }
 
-        return Arrays.asList(counter, calcDurationTime(start));
+        return Arrays.asList(counter, i, calcDurationTime(start));
     }
 
     /**
@@ -150,7 +149,7 @@ public class Main {
             }
             i++;
         }
-        return Arrays.asList(counter, calcDurationTime(start));
+        return Arrays.asList(counter, i, calcDurationTime(start));
     }
 
     private double calcDurationTime(double startTime) {
