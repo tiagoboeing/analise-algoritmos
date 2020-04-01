@@ -1,19 +1,23 @@
 package Trabalho1;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         int[] list1 = IntStream.range(0, 11).toArray();
         int[] list2 = IntStream.range(0, 21).toArray();
         int[] list3 = IntStream.range(0, 42).toArray();
-        int[] longList = IntStream.range(0, 13215468).toArray();
+        int[] longList = IntStream.range(0, 15324799).toArray();
 
         // Define values here
-        final int searchElement = 19;
-        final int[] searchOnList = longList;
+        final int searchElement = 8; // element to be searched
+        final int[] searchOnList = list1; // choose a list
+        final boolean useDelay = false;
+        final int delayTime = 5000; // in milliseconds
 
         Main main = new Main();
 
@@ -21,14 +25,15 @@ public class Main {
         System.out.printf("\nElementos da lista %s \n", main.showListElements(searchOnList));
         System.out.println("\n===============\n");
 
-        System.out.printf("Buscando %s na posição 2 - iterações = %s \n",
-                searchElement, main.moveFor2Position(searchOnList, searchElement));
+        List pos2 = main.moveFor2Position(searchOnList, searchElement, useDelay, delayTime);
+        System.out.printf("Buscando %s na posição 2 - iterações = %s - tempo de execução = %s segs \n",
+                searchElement, pos2.get(0), pos2.get(1));
 
-        System.out.printf("Buscando %s na posição mediana - iterações = %s \n",
-                searchElement, main.moveForMiddlePosition(searchOnList, searchElement));
+        System.out.printf("Buscando %s na posição mediana - iterações = %s segs \n",
+                searchElement, main.moveForMiddlePosition(searchOnList, searchElement, useDelay, delayTime));
 
-        System.out.printf("Buscando %s sem existir no vetor - iterações = %s \n",
-                searchElement, main.searchIfNotExists(searchOnList, searchElement));
+        System.out.printf("Buscando %s sem existir no vetor - iterações = %s segs \n",
+                searchElement, main.searchIfNotExists(searchOnList, searchElement, useDelay, delayTime));
     }
 
 
@@ -51,9 +56,13 @@ public class Main {
      * @param element int to be located on list
      * @return iterator count
      */
-    private int moveFor2Position(int[] list, int element) {
+    private List moveFor2Position(int[] list, int element, boolean useDelay, int delayTime) throws InterruptedException {
         int counter = 0;
         int i = 0;
+
+        double start = System.currentTimeMillis();
+        if (useDelay) Thread.sleep(delayTime);
+
         while (i < list.length) {
             if (list[i] != element) {
                 counter++;
@@ -67,7 +76,8 @@ public class Main {
             }
             i++;
         }
-        return counter;
+
+        return Arrays.asList(counter, calcDurationTime(start));
     }
 
     /**
@@ -78,10 +88,13 @@ public class Main {
      * @param element int to be located on list
      * @return iterator count
      */
-    private int moveForMiddlePosition(int[] list, int element) {
+    private List moveForMiddlePosition(int[] list, int element, boolean useDelay, int delayTime) throws InterruptedException {
         int counter = 0;
         int i = 0;
         int middle = (list.length + 1) / 2;
+
+        double start = System.currentTimeMillis();
+        if (useDelay) Thread.sleep(delayTime);
 
         while (i < list.length) {
             if (list[i] != element) {
@@ -96,7 +109,8 @@ public class Main {
             }
             i++;
         }
-        return counter;
+
+        return Arrays.asList(counter, calcDurationTime(start));
     }
 
     /**
@@ -106,9 +120,12 @@ public class Main {
      * @param element int element do be located
      * @return iterator count for worst case
      */
-    private int searchIfNotExists(int[] list, int element) {
+    private List searchIfNotExists(int[] list, int element, boolean useDelay, int delayTime) throws InterruptedException {
         int counter = 0;
         int i = 0;
+
+        double start = System.currentTimeMillis();
+        if (useDelay) Thread.sleep(delayTime);
 
         while (i < list.length) {
             if (list[i] != element) {
@@ -116,7 +133,11 @@ public class Main {
             }
             i++;
         }
-        return counter;
+        return Arrays.asList(counter, calcDurationTime(start));
+    }
+
+    private double calcDurationTime(double startTime) {
+        return (System.currentTimeMillis() - startTime) / 1000;
     }
 }
 
