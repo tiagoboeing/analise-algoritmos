@@ -1,6 +1,6 @@
 package TrabalhoFinal;
 
-public class Main {
+public class ExemploTrabalho {
     private static final int V1 = 0;
     private static final int V2 = 1;
     private static final int V3 = 2;
@@ -19,7 +19,7 @@ public class Main {
 
     private static final int QTDE_VERTICES = 15;
 
-    public Main() {
+    public ExemploTrabalho() {
         Grafo grafo = new Grafo(QTDE_VERTICES);
         grafo.criaAresta(V1, V2, 2);
         grafo.criaAresta(V1, V3, 6);
@@ -40,9 +40,9 @@ public class Main {
         grafo.criaAresta(V11, V14, 6);
         grafo.criaAresta(V12, V14, 6);
 
-        System.out.println("Caminho de custo mínimo");
-        for(int a = 0; a < QTDE_VERTICES; a++) {
-            for (Integer i : grafo.caminho(V1, a)) {
+        System.out.println("Caminho de custo mínimo da entrada (1) até a saída (14)");
+        for (int a = 0; a < QTDE_VERTICES; a++) {
+            for (Integer i : grafo.caminho(V1, V14)) {
                 System.out.print((i + 1) + " -> ");
             }
             System.out.println("CHEGOU");
