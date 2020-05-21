@@ -8,5 +8,5 @@ UNISUL - Universidade do Sul de Santa Catarina
 
 ## Tabela de conteúdos
 
-- [Trabalho 1](/Trabalho1)
-- [Trabalho final](/TrabalhoFinal)
+- [Trabalho 1](https://github.com/tiagoboeing/analise-algoritmos/blob/master/src/Trabalho1/Main.java)
+- [Trabalho final](https://github.com/tiagoboeing/analise-algoritmos/tree/master/src/TrabalhoFinal)
