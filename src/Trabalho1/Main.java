@@ -31,7 +31,7 @@ public class Main {
         System.out.printf("\nElementos da lista %s \n", main.showListElements(searchOnList));
         System.out.println("\n===============\n");
 
-        
+
         // Run one test at a time, comment other lines
         List pos2 = main.moveFor2Position(searchOnList, searchElement, useDelay, delayTime);
         System.out.printf("Buscando %s na posição 2 | Iterações (else): %s | Iterações (while): %s | Tempo: %s segs \n",
