@@ -41,12 +41,10 @@ public class ExemploTrabalho {
         grafo.criaAresta(V12, V14, 6);
 
         System.out.println("Caminho de custo mínimo da entrada (1) até a saída (14)");
-        for (int a = 0; a < QTDE_VERTICES; a++) {
-            for (Integer i : grafo.caminho(V1, V14)) {
-                System.out.print((i + 1) + " -> ");
-            }
-            System.out.println("CHEGOU");
+        for (Integer i : grafo.caminho(V1, V14)) {
+            System.out.print((i + 1) + " -> ");
         }
+        System.out.println("CHEGOU");
     }
 
 }

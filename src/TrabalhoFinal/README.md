@@ -24,3 +24,8 @@ Saída: Um caminho que leva Talita até a saída do museu.
     - Demonstrar um exemplo de um caso onde o problema foi resolvido, como apresentado na tela anterior. (passo a passo)
     - Postar os arquivos fonte do código (.java) e os arquivos compilados (. class ) em uma única pasta de forma que possam ser executados através do comando java museu.class.
         
+# Corredores personalizados
+
+O grafo customizado criado para resolução do problema.
+
+![](https://i.imgur.com/Rr8dm7e.png)

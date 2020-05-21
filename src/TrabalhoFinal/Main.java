@@ -13,40 +13,33 @@ public class Main {
     private static final int V10 = 9;
     private static final int V11 = 10;
     private static final int V12 = 11;
-    private static final int V13 = 12;
-    private static final int V14 = 13;
-    private static final int V15 = 14;
 
-    private static final int QTDE_VERTICES = 15;
+    private static final int QTDE_VERTICES = 12;
 
     public Main() {
         Grafo grafo = new Grafo(QTDE_VERTICES);
-        grafo.criaAresta(V1, V2, 2);
-        grafo.criaAresta(V1, V3, 6);
-        grafo.criaAresta(V1, V4, 4);
-        grafo.criaAresta(V2, V5, 4);
-        grafo.criaAresta(V2, V6, 3);
-        grafo.criaAresta(V2, V7, 1);
-        grafo.criaAresta(V3, V7, 4);
-        grafo.criaAresta(V3, V8, 3);
-        grafo.criaAresta(V4, V9, 7);
-        grafo.criaAresta(V5, V10, 7);
-        grafo.criaAresta(V6, V10, 2);
-        grafo.criaAresta(V7, V11, 5);
-        grafo.criaAresta(V8, V11, 1);
+        grafo.criaAresta(V1, V2, 5);
+        grafo.criaAresta(V1, V3, 9);
+        grafo.criaAresta(V1, V4, 1);
+        grafo.criaAresta(V1, V5, 10);
+        grafo.criaAresta(V2, V6, 2);
+        grafo.criaAresta(V3, V7, 3);
+        grafo.criaAresta(V3, V8, 2);
+        grafo.criaAresta(V4, V8, 9);
+        grafo.criaAresta(V5, V9, 1);
+        grafo.criaAresta(V5, V10, 3);
+        grafo.criaAresta(V6, V11, 6);
+        grafo.criaAresta(V7, V12, 4);
+        grafo.criaAresta(V8, V12, 7);
         grafo.criaAresta(V9, V12, 3);
-        grafo.criaAresta(V9, V15, 5);
-        grafo.criaAresta(V10, V13, 5);
-        grafo.criaAresta(V11, V14, 6);
-        grafo.criaAresta(V12, V14, 6);
+        grafo.criaAresta(V10, V12, 4);
+
 
         System.out.println("Caminho de custo mínimo");
-        for(int a = 0; a < QTDE_VERTICES; a++) {
-            for (Integer i : grafo.caminho(V1, a)) {
-                System.out.print((i + 1) + " -> ");
-            }
-            System.out.println("CHEGOU");
+        for (Integer i : grafo.caminho(V1, V12)) {
+            System.out.print((i + 1) + " -> ");
         }
+        System.out.println("CHEGOU");
     }
 
 }
